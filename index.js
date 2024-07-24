@@ -30,3 +30,27 @@
 // });
 
 // bodlogo2
+const red = document.getElementById("red");
+const blue = document.getElementById("blue");
+const redNumber = document.getElementById("redNum");
+const blueNumber = document.getElementById("blueNum");
+const resetButton = document.getElementById("reset");
+
+redNumber.innerText = 50;
+blueNumber.innerText = 50;
+
+red.addEventListener("click", () => {
+  redNumber.innerText++;
+  blueNumber.innerText = 100 - redNumber.innerText;
+
+  red.style.width = `${redNumber.innerText}%`;
+  blue.style.width = `${blueNumber.innerText}%`;
+});
+
+blue.addEventListener("click", () => {
+  blueNumber.innerText++;
+  redNumber.innerText = 100 - blueNumber.innerText;
+
+  red.style.width = `${redNumber.innerText}%`;
+  blue.style.width = `${blueNumber.innerText}%`;
+});

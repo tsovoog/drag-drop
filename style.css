@@ -53,7 +53,7 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-.reset {
+#reset {
   width: 120px;
   height: 35px;
   border: 1px black solid;
@@ -61,11 +61,11 @@ body {
   text-align: center;
   font-size: 25px;
 }
-.redNum {
+#redNum {
   color: red;
   font-size: 80px;
 }
-.blueNum {
+#blueNum {
   color: blue;
   font-size: 80px;
 }
@@ -74,12 +74,12 @@ body {
   height: 75%;
   display: flex;
 }
-.red {
+#red {
   background-color: red;
   width: 50%;
   height: 100%;
 }
-.blue {
+#blue {
   background-color: blue;
   width: 50%;
   height: 100%;
