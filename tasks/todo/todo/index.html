@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/9cd0f99006.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="boards">
+        <div class="board">
+          <div class="title">To do <span id="count"></span></div>
+          <div class="card">
+            <div class="done"><i class="fa-solid fa-check"></i></div>
+            <div class="details">
+              <h4>Todo</h4>
+              <p>This is a to do card</p>
+              <div class="priority">High</div>
+            </div>
+            <div class="actions">
+              <i class="fa-solid fa-x"></i>
+              <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+          </div>
+          <div class="addCard">+ Add card</div>
+        </div>
+      </div>
+      <div id="modalSection">
+        <div id="modal">
+          <form>
+            <h1>Add Task</h1>
+            <div>
+              <label name="Title">Title</label>
+              <input class="modalSelect" type="text" value="" />
+            </div>
+            <div>
+              <label name="Description">Description</label>
+              <textarea name="Description" id="Description"></textarea>
+            </div>
+            <div>
+              <label name="Status">Status</label>
+              <select class="modalSelect" name="Status" id="Status">
+                <option value="todo"></option>
+              </select>
+            </div>
+            <div>
+              <label name="Priority">Priority</label>
+              <select class="modalSelect" name="Priority" id="Priority">
+                <option value="low"></option>
+              </select>
+            </div>
+            <div>
+              <button class="modalButton" type="submit">Add Task</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./index.js"></script>
+</html>

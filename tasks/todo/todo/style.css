@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+#container {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  background-image: url(https://c1.wallpaperflare.com/path/565/385/156/sunset-brook-green-meadow-june-df867360f0bed19da26bbb3838498c8f.jpg);
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: transparent;
+  z-index: 0;
+}
+#boards {
+  display: flex;
+  padding: 120px 0px;
+  gap: 16px;
+  border: 1px red solid;
+  width: 85%;
+  height: 72.5%;
+}
+.board {
+  border: 1px green solid;
+  border-radius: 8px;
+  background-color: #ebecf0;
+  width: 23.7%;
+  height: fit-content;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.card {
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  gap: 12px;
+  cursor: grab;
+  background-color: white;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+}
+.priority {
+  border: 1px black solid;
+  border-radius: 8px;
+  text-align: center;
+  width: fit-content;
+  padding: 0px 8px;
+  font-size: 14px;
+}
+.addCard {
+  border-radius: 4px;
+  background-color: #ebecf0;
+  padding: 8px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  gap: 16px;
+  cursor: pointer;
+  border-style: none;
+}
+.addCard:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* modal section started here */
+#modalSection {
+  inset: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+}
+
+#modal {
+  width: 368px;
+  height: 460px;
+  padding: 16px;
+  inset: 0;
+  border-radius: 8px;
+  border-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  background-color: white;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.modalSelect {
+  width: 100%;
+  padding: 8px;
+  border: 1px gray solid;
+  border-radius: 4px;
+}
+#Description {
+  width: 100%;
+  height: 82px;
+  border: 1px gray solid;
+}
+.modalButton {
+  width: 100%;
+  height: 32px;
+  margin-top: 24px;
+  padding: 8px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
