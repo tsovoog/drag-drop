@@ -5,7 +5,7 @@ options.forEach((element, index) => {
   boards.innerHTML += `<div class="board">
             <div class="title"> ${element} <span id="count"></span></div>
                 <div id="tasks-${index}"></div>
-                <div class="addCard">+Add card</div>
+                <div id="add-${index}" class="addCard">+Add card</div>
         
           </div>`;
 });
@@ -14,6 +14,11 @@ const tasks = document.getElementById("tasks-0");
 const tasks1 = document.getElementById("tasks-1");
 const task2 = document.getElementById("tasks-2");
 const tasks3 = document.getElementById("tasks-3");
+
+const add = document.getElementById("add-0");
+const add1 = document.getElementById("add-1");
+const add2 = document.getElementById("add-2");
+const add3 = document.getElementById("add-3");
 
 const addCard = document.querySelectorAll(".addCard");
 const modal = document.getElementById("modal");
@@ -26,6 +31,7 @@ const priority = document.getElementById("Priority");
 const board = document.querySelectorAll(".board");
 const doneIcon = document.getElementById("done");
 const xIcon = document.getElementById("x");
+
 const card = document.querySelectorAll(".card");
 addCard.forEach((item) => {
   item.addEventListener("click", () => {
@@ -40,7 +46,7 @@ window.onclick = function (event) {
 };
 
 const createNewTask = () => {
-  return `<div class="card"  >
+  return `<div class="card" id="${num}" >
 <div id="done"><i class="fa-solid fa-check"></i></div>
 <div class="details">
   <h4>${title.value}</h4>
@@ -48,22 +54,35 @@ const createNewTask = () => {
   <div class="priority">${priority.value}</div>
 </div>
 <div class="actions">
-  <i  id="x" class="fa-solid fa-x"></i>
+  <i onclick="remove(event)" id="x" class="fa-solid fa-x"></i>
   <i id="pen" class="fa-solid fa-pen-to-square"></i>
 </div>
 </div>`;
 };
+let num = 1;
+const remove = (event) => {
+  const deleteCard = document.getElementById(
+    event.currentTarget.parentNode.parentNode.id
+  );
+  console.log(deleteCard);
+  const parent = document.getElementById(deleteCard.parentNode.id);
+  console.log(parent);
+  parent.removeChild(deleteCard);
+};
+
+const a = document.getElementById("text1");
+const b = document.getElementById("text2");
 
 addTask.addEventListener("click", () => {
-  if (title.value == "") {
-    const anhaaruulga = document.getElementById("text1");
-    anhaaruulga.style.display = "flex";
-    modalSection.style.display = "flex";
-    if (description.value == "") {
-      const b = document.getElementById("text2");
-      b.style.display = "flex";
-      modalSection.style.display = "flex";
-    }
+  if (title.value == "" && description.value == "") {
+    a.style.display = "block";
+    b.style.display = "block";
+  } else if (description.value == "") {
+    b.style.display = "block";
+    a.style.display = "none";
+  } else if (title.value == "") {
+    b.style.display = "none";
+    a.style.display = "block";
   } else {
     taskStatus.value === "In progress"
       ? (tasks1.innerHTML += createNewTask())
@@ -73,5 +92,8 @@ addTask.addEventListener("click", () => {
       ? (task2.innerHTML += createNewTask())
       : (tasks3.innerHTML += createNewTask());
     modalSection.style.display = "none";
+    a.style.display = "none";
+    b.style.display = "none";
+    num += 1;
   }
 });
