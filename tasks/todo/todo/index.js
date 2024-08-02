@@ -2,9 +2,9 @@ const boards = document.getElementById("boards");
 const options = ["To do", "In progress", "Stuck", "Done"];
 
 options.forEach((element, index) => {
-  boards.innerHTML += `<div class="board">
+  boards.innerHTML += `<div class="board" ondragover="dragover(event)" ondrop="drop(event, ${index})">
             <div class="title"> ${element} <span id="count"></span></div>
-                <div id="tasks-${index}"></div>
+                <div id="tasks-${index}" class="innerContainer"></div>
                 <div id="add-${index}" class="addCard">+Add card</div>
         
           </div>`;
@@ -46,8 +46,8 @@ window.onclick = function (event) {
 };
 
 const createNewTask = () => {
-  return `<div class="card" id="${num}" >
-<div id="done"><i class="fa-solid fa-check"></i></div>
+  return `<div class="card" id="${num}" draggable="true" ondragstart="drag(event)">
+<input type="checkbox"/>
 <div class="details">
   <h4>${title.value}</h4>
   <p>${description.value}</p>
@@ -97,3 +97,31 @@ addTask.addEventListener("click", () => {
     num += 1;
   }
 });
+const drag = (event) => {
+  event.dataTransfer.setData("text/plain", event.target.id);
+};
+
+const dragover = (event) => {
+  event.preventDefault();
+};
+
+const drop = (event, index) => {
+  const draggedItemId = event.dataTransfer.getData("text/plain");
+  const draggedItem = document.getElementById(draggedItemId);
+
+  const check = draggedItem.getElementsByTagName("input");
+
+  if (index === 0) {
+    check[0].checked = false;
+    tasks.appendChild(draggedItem);
+  } else if (index === 1) {
+    check[0].checked = false;
+    tasks1.appendChild(draggedItem);
+  } else if (index === 2) {
+    check[0].checked = false;
+    task2.appendChild(draggedItem);
+  } else if (index === 3) {
+    check[0].checked = true;
+    tasks3.appendChild(draggedItem);
+  }
+};
