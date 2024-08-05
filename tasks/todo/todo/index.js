@@ -15,11 +15,6 @@ const tasks1 = document.getElementById("tasks-1");
 const task2 = document.getElementById("tasks-2");
 const tasks3 = document.getElementById("tasks-3");
 
-const add = document.getElementById("add-0");
-const add1 = document.getElementById("add-1");
-const add2 = document.getElementById("add-2");
-const add3 = document.getElementById("add-3");
-
 const addCard = document.querySelectorAll(".addCard");
 const modal = document.getElementById("modal");
 const modalSection = document.getElementById("modalSection");
@@ -125,3 +120,13 @@ const drop = (event, index) => {
     tasks3.appendChild(draggedItem);
   }
 };
+const priorityValue = document.querySelectorAll(".sort");
+priorityValue.forEach((element) => {
+  if (element.value == "Low") {
+    element.value = "a";
+  } else if (element.value == "Medium") {
+    element.value = "b";
+  } else if (element.value == "High") {
+    element.value = "c";
+  }
+});
