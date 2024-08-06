@@ -54,36 +54,40 @@ const weathers = [
 //   }
 // };
 
-const testobject = {
+const weatherImages = {
   sunny: {
-    icon: `<i class="fa-solid fa-snowflake"></i>`,
-    dayBackground: "./",
-    nightBackground: "./",
+    icon: `<i class="fa-solid fa-sun"></i>`,
+    dayBackground: "./img/sky-sunny-clouds-cloudy.webp",
   },
-  cloudy: { icon: "ddd", dayBackground: "./", nightBackground: "./" },
-  rainy: { icon: "ddd", dayBackground: "./", nightBackground: "./" },
-  snowy: { icon: "ddd", dayBackground: "./", nightBackground: "./" },
+  cloudy: {
+    icon: `<i class="fa-solid fa-cloud-sun"></i>`,
+    dayBackground:
+      "./img/1000_F_308999044_MUVyur2zQEAe9AnkEQcQsXCN6QlTF2IR.jpg",
+    nightBackground:
+      "./img/1000_F_308999044_MUVyur2zQEAe9AnkEQcQsXCN6QlTF2IR.jpg",
+  },
+  rainy: {
+    icon: `<i class="fa-solid fa-cloud-showers-heavy"></i>`,
+    dayBackground: "./img/ai-generated-beautiful-rain-day-view-photo.jpg",
+    nightBackground: "./img/Rain photography_രാത്രിമഴ ❤️.jpeg",
+  },
+  snowy: {
+    icon: `<i class="fa-solid fa-snowflake"></i>`,
+    dayBackground:
+      "./img/HD-wallpaper-snowy-day-stream-snow-winter-snowflakes.jpg",
+    nightBackground:
+      "./img/1000_F_308999044_MUVyur2zQEAe9AnkEQcQsXCN6QlTF2IR.jpg",
+  },
 };
 // card component
-const cardComponent = () => {
-  weathers.forEach(({ city, temperature, weather, time, day, icon }) => {
-    const result = iconComponent(icon);
-    const boards = document.getElementById("main");
-    // let bgimage;
-    // if (day === "day") {
 
-    //   }
-    //   bgimage = "./img/sky-sunny-clouds-cloudy.webp";
-    // } else if (day === "night") {
-    //   bgimage = "./img/pexels-photo-10317078.webp";
-    // }
-
-    boards.innerHTML += `
+const cardComponent = ({ city, temperature, weather, time, day, icon }) => {
+  return `
     <div class="mainWeather">
       <div id="location" style="background-image: url(${
         day == "day"
-          ? testobject[day].dayBackground
-          : testobject[day].nightBackground
+          ? weatherImages[icon].dayBackground
+          : weatherImages[icon].nightBackground
       });">
         <div class="left">
           <div>
@@ -97,11 +101,28 @@ const cardComponent = () => {
         <div class="right">
           <div class="gradus">${temperature}<sup>o</sup></div>
           <div class="icon">
-            ${testobject[day].icon}
+            ${weatherImages[icon].icon}
           </div>
         </div>
       </div>
     </div>`;
+};
+
+const render = (data) => {
+  const boards = document.getElementById("main");
+  boards.innerHTML = "";
+
+  data.forEach((data) => {
+    boards.innerHTML += cardComponent(data);
   });
 };
-cardComponent();
+render(weathers);
+
+const textInput = document.getElementById("text");
+
+textInput.addEventListener("keyup", (event) => {
+  const filtered = weathers.filter(({ city }) =>
+    city.toLowerCase().includes(textInput.value.toLowerCase())
+  );
+  render(filtered);
+});
