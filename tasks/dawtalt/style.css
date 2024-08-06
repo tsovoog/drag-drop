@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: white;
 }
 body {
   width: 100vw;
@@ -13,18 +14,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
 }
 .layout {
   width: 420px;
   height: 750px;
   border: 1px solid grey;
   border-radius: 40px;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
 header {
   width: 100%;
   height: 10%;
+}
+#top {
+  padding: 20px;
 }
 #main {
   width: 100%;
@@ -40,16 +44,14 @@ header {
   padding: 5px;
 }
 .mainWeather {
-  margin-top: 10px;
   width: 100%;
   height: fit-content;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 3px;
 }
-.location {
-  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20230930/pngtree-immersive-3d-depiction-of-sunny-weather-with-clouds-image_13534870.png);
+#location {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
