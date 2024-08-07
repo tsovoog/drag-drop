@@ -39,20 +39,15 @@ const weathers = [
     day: "night",
     time: new Date().toLocaleTimeString("fr-FR"),
   },
+  {
+    city: "Ulaanbaatar",
+    temperature: 25,
+    weather: "Clear",
+    icon: "sunny",
+    day: "day",
+    time: new Date().toLocaleTimeString("fr-FR"),
+  },
 ];
-//icon component
-
-// const iconComponent = (icon) => {
-//   if (icon === "sunny") {
-//     return `<i class="fa-solid fa-sun"></i>`;
-//   } else if (icon === "cloudy") {
-//     return `<i class="fa-solid fa-cloud-sun"></i>`;
-//   } else if (icon === "rainy") {
-//     return `<i class="fa-solid fa-cloud-showers-heavy"></i>`;
-//   } else if (icon === "snowy") {
-//     return `<i class="fa-solid fa-snowflake"></i>`;
-//   }
-// };
 
 const weatherImages = {
   sunny: {
@@ -60,14 +55,14 @@ const weatherImages = {
     dayBackground: "./img/sky-sunny-clouds-cloudy.webp",
   },
   cloudy: {
-    icon: `<i class="fa-solid fa-cloud-sun"></i>`,
+    icon: `<i class="fa-solid fa-cloud"></i>`,
     dayBackground:
-      "./img/1000_F_308999044_MUVyur2zQEAe9AnkEQcQsXCN6QlTF2IR.jpg",
+      "./img/1000_F_828868638_LVMM4HOAigVpklAtNfMT8emWK3CWrPCV.jpg",
     nightBackground:
-      "./img/1000_F_308999044_MUVyur2zQEAe9AnkEQcQsXCN6QlTF2IR.jpg",
+      "./img/1000_F_783391580_fz5bBIdKyZqWF93pMkag6nJjOAiB1rtW.jpg",
   },
   rainy: {
-    icon: `<i class="fa-solid fa-cloud-showers-heavy"></i>`,
+    icon: `<i class="fa-solid fa-cloud-rain"></i>`,
     dayBackground: "./img/ai-generated-beautiful-rain-day-view-photo.jpg",
     nightBackground: "./img/Rain photography_രാത്രിമഴ ❤️.jpeg",
   },
@@ -83,44 +78,41 @@ const weatherImages = {
 
 const cardComponent = ({ city, temperature, weather, time, day, icon }) => {
   return `
-    <div class="mainWeather">
-      <div id="location" style="background-image: url(${
-        day == "day"
-          ? weatherImages[icon].dayBackground
-          : weatherImages[icon].nightBackground
-      });">
-        <div class="left">
-          <div>
-            <h1>${city}</h1>
-            <p class="time">${time}</p>
+      <div class="mainWeather">
+        <div id="location" style="background-image: url(${
+          day == "day"
+            ? weatherImages[icon].dayBackground
+            : weatherImages[icon].nightBackground
+        });">
+          <div class="left">
+            <div>
+              <h1>${city}</h1>
+              <p class="time">${time}</p>
+            </div>
+            <div>
+              <p>${weather}</p>
+            </div>
           </div>
-          <div>
-            <p>${weather}</p>
+          <div class="right">
+            <div class="gradus">${temperature}<sup>o</sup></div>
+            <div class="icon">
+              ${weatherImages[icon].icon}
+            </div>
           </div>
         </div>
-        <div class="right">
-          <div class="gradus">${temperature}<sup>o</sup></div>
-          <div class="icon">
-            ${weatherImages[icon].icon}
-          </div>
-        </div>
-      </div>
-    </div>`;
+      </div>`;
 };
-
+const boards = document.getElementById("main");
 const render = (data) => {
-  const boards = document.getElementById("main");
-  boards.innerHTML = "";
-
-  data.forEach((data) => {
-    boards.innerHTML += cardComponent(data);
+  data.forEach((element) => {
+    boards.innerHTML += cardComponent(element);
   });
 };
 render(weathers);
 
 const textInput = document.getElementById("text");
 
-textInput.addEventListener("keyup", (event) => {
+textInput.addEventListener("keyup", () => {
   const filtered = weathers.filter(({ city }) =>
     city.toLowerCase().includes(textInput.value.toLowerCase())
   );
