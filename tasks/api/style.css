@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+.container {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+}
+#searchInput {
+  width: 200px;
+  height: 30px;
+}
+#searchButton {
+  width: 100px;
+  height: 30px;
+}
